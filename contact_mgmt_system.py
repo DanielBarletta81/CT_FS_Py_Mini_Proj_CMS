@@ -1,4 +1,5 @@
 import re
+import os
 #Editing an existing contact's information (name, phone number, email, etc.).
 #Deleting a contact by searching for their unique identifier.
 
@@ -101,7 +102,8 @@ def edit_contact():
 
      
 
-#Good
+# Function to delete contacts from list
+
 def delete_contact():
 
     try:
@@ -156,12 +158,25 @@ def export_contacts():
         print(f'Contact information exported to {file}')
     
     except FileNotFoundError | ValueError:
-      print(f'An exception occurred : {ValueError}{FileNotFoundError}')            
+      print(f'An exception occurred : {ValueError}{FileNotFoundError}')      
 
-#Not Started
-def import_contacts():
+
+
+#Import contacts from text file here
+# Pardon our appearance, we're undergoing some renovations...
+
+def import_contacts(file_name):
      #read contacts from a text file
-     pass
+    contacts = []
+    with open(file_name, 'r') as file:
+        for line in file:
+            # separate contacts
+            contact_info = line.strip().split(',')  # Format the delimiter
+            contacts.append(contact_info)
+            print(contacts)
+            
+    return contacts
+
 
 
 
